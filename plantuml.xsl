@@ -5,39 +5,40 @@
 	exclude-result-prefixes="xs tns">
 	<xsl:output method="text" />
 <xsl:template match="/">
-<html>
-<head>
-<title>
-Interface Requirement Specification
-</title>
-</head>
+!*> Interface Requirement Specification
 <xsl:apply-templates mode="#current" />
-</html>
 </xsl:template>
 <xsl:template match="xs:schema">
 !1 Interface Requirement Specification
-
+!*> Primitive types
 !2 Primitive type encoding definitions
 !|Basic type | XSD base type |Size in bits| Min | Max|Endianness |
 |Unsigned Byte |xs:unsignedByte | 8 bits |0 |255 |n/a |
 |Unsigned Short |xs:unsignedShort| 16 bits |0 |65535 |Big Endian |
 |Unsigned Integer|xs:unsignedByte | 8 bits |0 |4294967295|Big Endian |
 |IEEE 754 Floating point simple precision|xs:float|32 bits|||Big Endian |
-
-!1 Model
+*!
+!*> Models
 !startuml
 class Demo{
 + hello : string
 + world : char *
 }
 !enduml
-!2 Complex type definitions
+!*> Complex type definitions
 !startuml
 <xsl:for-each select="xs:complexType">
 <xsl:call-template name="complexContentTemplate" />
 </xsl:for-each>
 !enduml
-!1 Code Snippet
+*!
+*!
+*!
+!*> Code sippets
+!listing cpp {
+cout &lt;&lt; "hello world !";
+}
+*!
 </xsl:template>
 
 <xsl:template name="complexContentTemplate">
